@@ -1,17 +1,19 @@
 <?php
+// Connexion à la base de données
 $dbname = "darras_reservation";
-$host = "phpmyadmin.alwaysdata.com";
+$servername = "mysql-darras.alwaysdata.net";
+$port = 3306; // Remplacez par le port approprié
 $username = "darras";
 $password = "Lo200177";
 
-$con = mysqli_connect($host, $username, $password, $dbname);
-
-// Vérification
-if (!$con) {
-    echo "Message : Impossible de se connecter à la BD";
-die();
-} else {
+try {
+    $con = new mysqli($servername, $username, $password, $dbname, $port);
+    if ($con->connect_error) {
+        throw new Exception("Impossible de se connecter à la base de données : " . $con->connect_error);
+    }
     echo "Connexion effectuée avec succès!";
+} catch (Exception $e) {
+    echo "Erreur de connexion à la base de données : " . $e->getMessage();
+    die();
 }
-
 ?>
