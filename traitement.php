@@ -1,19 +1,20 @@
 <?php
 // Connexion à la base de données
-$servername = "phpmyadmin.alwaysdata.com";
-$username = "root";
+$servername = "mysql-darras.alwaysdata.net";
+$username = "darras";
 $password = "Lo200177";
 $dbname = "darras_reservation";
+$port = 3306;
 
-require_once 'connexion.php';
+// Étape 2 : Inclure le fichier de connexion
+require_once __DIR__ . '/connexion.php';
 
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname, $port);
 
 if ($conn->connect_error) {
     die("Erreur de connexion à la base de données : " . $conn->connect_error);
 }
-
 // Vérification si le formulaire est soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupération des données envoyées par le formulaire

@@ -9,7 +9,7 @@ $con = mysqli_connect($host, $username, $password, $dbname);
 // Vérification
 if (!$con) {
     echo "Message : Impossible de se connecter à la BD";
-    die();
+die();
 } else {
     echo "Connexion effectuée avec succès!";
 }
